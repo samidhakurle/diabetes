@@ -3,15 +3,15 @@ from flask import Flask,render_template,request
 import numpy as np
 import pickle
 
-app=Flask(__name__)
+a1=Flask(__name__)
 model=pickle.load(open('Diabetes_Classifier.pkl','rb'))
 
-@app.route("/")
+@a1.route("/")
 def homepage():
     return render_template('homepage.html')
 
 
-@app.route("/predict",methods=['POST','GET'])
+@a1.route("/predict",methods=['POST','GET'])
 def predict():
     pregnancies=float(request.form['pregnancies'])
     glucose=float(request.form['glucose'])
@@ -32,4 +32,4 @@ def predict():
 
 
 if __name__=='__main__':
-    app.run(debug=True) 
+    a1.run(debug=True) 
